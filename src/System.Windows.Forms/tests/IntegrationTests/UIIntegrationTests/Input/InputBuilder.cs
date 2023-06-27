@@ -77,7 +77,16 @@ internal static class InputBuilder
                             MouseButtons.Left => MOUSE_EVENT_FLAGS.MOUSEEVENTF_LEFTDOWN,
                             MouseButtons.Middle => MOUSE_EVENT_FLAGS.MOUSEEVENTF_MIDDLEDOWN,
                             MouseButtons.Right => MOUSE_EVENT_FLAGS.MOUSEEVENTF_RIGHTDOWN,
+                            MouseButtons.XButton1 => MOUSE_EVENT_FLAGS.MOUSEEVENTF_XDOWN,
+                            MouseButtons.XButton2 => MOUSE_EVENT_FLAGS.MOUSEEVENTF_XDOWN,
                             _ => throw new ArgumentException("Unexpected button", nameof(button)),
+                        },
+                    mouseData =
+                        button switch
+                        {
+                            MouseButtons.XButton1 => PInvoke.XBUTTON1,
+                            MouseButtons.XButton2 => PInvoke.XBUTTON2,
+                            _ => 0,
                         },
                 }
             },
@@ -99,7 +108,16 @@ internal static class InputBuilder
                             MouseButtons.Left => MOUSE_EVENT_FLAGS.MOUSEEVENTF_LEFTUP,
                             MouseButtons.Middle => MOUSE_EVENT_FLAGS.MOUSEEVENTF_MIDDLEUP,
                             MouseButtons.Right => MOUSE_EVENT_FLAGS.MOUSEEVENTF_RIGHTUP,
+                            MouseButtons.XButton1 => MOUSE_EVENT_FLAGS.MOUSEEVENTF_XUP,
+                            MouseButtons.XButton2 => MOUSE_EVENT_FLAGS.MOUSEEVENTF_XUP,
                             _ => throw new ArgumentException("Unexpected button", nameof(button)),
+                        },
+                    mouseData =
+                        button switch
+                        {
+                            MouseButtons.XButton1 => PInvoke.XBUTTON1,
+                            MouseButtons.XButton2 => PInvoke.XBUTTON2,
+                            _ => 0,
                         },
                 }
             },
